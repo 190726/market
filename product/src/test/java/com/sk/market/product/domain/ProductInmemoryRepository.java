@@ -1,6 +1,8 @@
 package com.sk.market.product.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,5 +21,10 @@ public class ProductInmemoryRepository implements ProductRepository {
 	@Override
 	public Product findBy(UUID id) {
 		return persistenceMap.get(id);
+	}
+
+	@Override
+	public List<Product> findAll() {
+		return new ArrayList<>(persistenceMap.values());
 	}
 }
