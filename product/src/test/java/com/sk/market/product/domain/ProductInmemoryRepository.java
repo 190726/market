@@ -11,7 +11,13 @@ public class ProductInmemoryRepository implements ProductRepository {
 	@Override
 	public Product save(Product product) {
 		UUID uuid = UUID.randomUUID();
+		product.id(uuid);
 		persistenceMap.putIfAbsent(uuid, product);
 		return persistenceMap.get(uuid);
+	}
+
+	@Override
+	public Product findBy(UUID id) {
+		return persistenceMap.get(id);
 	}
 }

@@ -18,4 +18,8 @@ public class Product {
 	private String name;
 	private BigDecimal price;
 	private Category category;
+	
+	public void id(UUID id) {
+		this.id = id;
+	}
 }
