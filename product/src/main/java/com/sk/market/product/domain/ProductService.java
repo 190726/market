@@ -3,6 +3,8 @@ package com.sk.market.product.domain;
 import java.util.List;
 import java.util.UUID;
 
+import com.sk.market.product.repository.ProductRepository;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -12,7 +14,8 @@ public class ProductService {
 	private final ProductValidation productValidation = new ProductValidation();
 
 	public Product register(Product product) {
-		return productRepository.save(productValidation.validate(product));
+		return productRepository.save(
+				productValidation.validate(product));
 	}
 
 	public Product findBy(UUID id) {

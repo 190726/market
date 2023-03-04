@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.sk.market.product.repository.ProductInmemoryRepository;
+import com.sk.market.product.repository.ProductRepository;
+
 public class ProductServiceTest {
 
 	private ProductService productService;

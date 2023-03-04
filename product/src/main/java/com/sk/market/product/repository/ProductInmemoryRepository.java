@@ -1,10 +1,12 @@
-package com.sk.market.product.domain;
+package com.sk.market.product.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import com.sk.market.product.domain.Product;
 
 public class ProductInmemoryRepository implements ProductRepository {
 	
