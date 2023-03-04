@@ -1,9 +1,14 @@
 package com.sk.market.product.domain;
 
-public class ProductService {
+import lombok.RequiredArgsConstructor;
 
-	public void register(Product product) {
-		throw new UnsupportedOperationException();
+@RequiredArgsConstructor
+public class ProductService {
+	
+	private final ProductRepository productRepository;
+
+	public Product register(Product product) {
+		return productRepository.save(product);
 	}
 
 }

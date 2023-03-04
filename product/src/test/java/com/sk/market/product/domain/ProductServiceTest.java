@@ -1,5 +1,6 @@
 package com.sk.market.product.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
@@ -14,18 +15,20 @@ public class ProductServiceTest {
 	
 	@BeforeEach
 	void init() {
-		productService = new ProductService();
+		ProductRepository productRepository = new ProductInmemoryRepository();
+		productService = new ProductService(productRepository);
 	}
 
 	@Test
 	void registerProduct() throws Exception {
 		Product product = Product
 				.builder()
-					.id(UUID.randomUUID())
 					.name("상품명")
 					.price(BigDecimal.ONE)
 					.category(Category.ELECTRIC)
 				.build();
-		productService.register(product);
+		Product register = productService.register(product);
+		assertThat(register.getName()).isEqualTo(product.getName());
 	}
+	
 }
