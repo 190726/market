@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import com.sk.market.product.repository.ProductRepository;
-
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

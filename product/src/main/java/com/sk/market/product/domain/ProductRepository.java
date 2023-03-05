@@ -1,9 +1,7 @@
-package com.sk.market.product.repository;
+package com.sk.market.product.domain;
 
 import java.util.List;
 import java.util.UUID;
-
-import com.sk.market.product.domain.Product;
 
 public interface ProductRepository {
 

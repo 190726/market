@@ -10,8 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.comparator.Comparators;
 
-import com.sk.market.product.repository.ProductInmemoryRepository;
-import com.sk.market.product.repository.ProductRepository;
+import com.sk.market.product.adapter.ProductInmemoryRepository;
 
 public class ProductStreamTest {
 	
@@ -45,7 +44,6 @@ private ProductService productService;
 		Comparator<Product> compare = (p1, p2) -> p1.getCategory().compareTo(p2.getCategory());
 		Comparator<Product> compare2 = Comparator.comparing((Product p) -> p.getCategory());
 		Comparator<Product> compare3 = Comparator.comparing(Product::getCategory);
-		
 		
 		//카테고리순 -> 가격순
 		productService.findAll()
