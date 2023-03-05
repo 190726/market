@@ -14,6 +14,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 public class Product {
+	
 	private UUID id;
 	private String name;
 	private BigDecimal price;
@@ -21,5 +22,10 @@ public class Product {
 	
 	public void id(UUID id) {
 		this.id = id;
+	}
+	
+	public Product validate(ProductValidator validator) {
+		validator.validate(this);
+		return this;
 	}
 }

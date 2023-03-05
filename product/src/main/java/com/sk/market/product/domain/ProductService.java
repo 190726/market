@@ -1,6 +1,10 @@
 package com.sk.market.product.domain;
 
+import static java.util.stream.Collectors.groupingBy;
+
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import com.sk.market.product.repository.ProductRepository;
@@ -11,11 +15,11 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
 	
 	private final ProductRepository productRepository;
-	private final ProductValidation productValidation = new ProductValidation();
+	private final ProductValidator productValidator = new ProductValidator();
 
 	public Product register(Product product) {
 		return productRepository.save(
-				productValidation.validate(product));
+				product.validate(productValidator));
 	}
 
 	public Product findBy(UUID id) {
@@ -25,6 +29,13 @@ public class ProductService {
 	}
 
 	public List<Product> findAll() {
-		return productRepository.findAll();
+		return productRepository.findAll().stream()
+				.sorted(Comparator.comparing(Product::getName)).toList() ;
+	}
+
+	public Map<Category, List<Product>> groupByCategory() {
+		return findAll()
+				.stream()
+				.collect(groupingBy(Product::getCategory));
 	}
 }

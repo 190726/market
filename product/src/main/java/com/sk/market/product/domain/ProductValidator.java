@@ -3,7 +3,7 @@ package com.sk.market.product.domain;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class ProductValidation {
+public class ProductValidator {
 	
 	public Product validate(Product product) {
 		Objects.requireNonNull(product, "product object have not null");
