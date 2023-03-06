@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.sk.market.product.domain.Product;
-import com.sk.market.product.domain.ProductRepository;
+import com.sk.market.product.domain.ProductPersistencePort;
 
-public class ProductInmemoryRepository implements ProductRepository {
+public class ProductInmemoryAdapter implements ProductPersistencePort {
 	
 	private final static Map<UUID, Product> persistenceMap = new HashMap<>();
 

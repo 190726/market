@@ -21,7 +21,6 @@ public class ProductMapperTest {
 		Product product = productStub();
 		ProductEntity entity = mapper.toEntity(product);
 		System.out.println(entity);
-		
 	}
 	
 	private Product productStub() {

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.comparator.Comparators;
 
-import com.sk.market.product.adapter.ProductInmemoryRepository;
+import com.sk.market.product.adapter.ProductInmemoryAdapter;
 
 public class ProductStreamTest {
 	
@@ -18,7 +18,7 @@ private ProductService productService;
 	
 	@BeforeEach
 	void init() {
-		ProductRepository productRepository = new ProductInmemoryRepository();
+		ProductPersistencePort productRepository = new ProductInmemoryAdapter();
 		productService = new ProductService(productRepository);
 		Product product1 = Product.builder().name("상품명4").price(new BigDecimal(150)).category(Category.ELECTRIC).build();
 		Product product2 = Product.builder().name("상품명6").price(new BigDecimal(110)).category(Category.ELECTRIC).build();

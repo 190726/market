@@ -9,10 +9,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 @DataJpaTest
 public class ProductJpaTest {
 	
-	@Autowired ProductEntityJpaRepository productEntityJpaRepository;
+	@Autowired ProductPersistenceAdapter persistenceAdapter;
 
 	@Test
-	void testName() throws Exception {
-		productEntityJpaRepository.findAll();
+	void saveTest() throws Exception {
+		
 	}
 }

@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductService {
 	
-	private final ProductRepository productRepository;
+	private final ProductPersistencePort productRepository;
 	private final ProductValidator productValidator = new ProductValidator();
 
 	public Product register(Product product) {
