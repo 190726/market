@@ -17,9 +17,11 @@ public class ProductJpaTest {
 	@Autowired ProductPersistenceAdapter persistenceAdapter;
 
 	@Test
-	void saveTest() throws Exception {
+	void 저장후조회하기() throws Exception {
 		Product product = ProductStub.product();
 		Product save = persistenceAdapter.save(product);
 		assertThat(save.getName()).isEqualTo(product.getName());
+		Product findProduct = persistenceAdapter.findBy(save.getId());
+		assertThat(findProduct.getId()).isEqualTo(save.getId());
 	}
 }

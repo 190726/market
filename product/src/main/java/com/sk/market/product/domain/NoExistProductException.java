@@ -14,4 +14,8 @@ public class NoExistProductException extends RuntimeException{
 	public NoExistProductException(UUID id, String name) {
 		super(String.format(ERR_MESSAGE, id , name));
 	}
+	
+	public NoExistProductException(UUID id) {
+		this(id, "");
+	}
 }

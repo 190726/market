@@ -1,10 +1,12 @@
 package com.sk.market.product.adapter;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
+import com.sk.market.product.domain.NoExistProductException;
 import com.sk.market.product.domain.Product;
 import com.sk.market.product.domain.ProductPersistencePort;
 
@@ -27,7 +29,9 @@ public class ProductPersistenceAdapter implements ProductPersistencePort{
 
 	@Override
 	public Product findBy(UUID id) {
-		throw new UnsupportedOperationException();
+		Optional<ProductEntity> find = productEntityJpaRepository.findById(id);
+		ProductEntity findProductEntity = find.orElseThrow(() -> new NoExistProductException(id));
+		return productEntityMapper.toDomain(findProductEntity);
 	}
 
 	@Override
