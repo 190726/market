@@ -36,6 +36,7 @@ public class ProductPersistenceAdapter implements ProductPersistencePort{
 
 	@Override
 	public List<Product> findAll() {
-		throw new UnsupportedOperationException();
+		List<ProductEntity> findAll = productEntityJpaRepository.findAll();
+		return productEntityMapper.toDomainList(findAll);
 	}
 }
