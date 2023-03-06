@@ -18,10 +18,12 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
 @Setter(value = AccessLevel.PRIVATE)
+@NoArgsConstructor
 @Builder
 @AllArgsConstructor
 @Table(name = "PRODUCTS")

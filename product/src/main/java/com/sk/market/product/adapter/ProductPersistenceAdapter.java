@@ -19,6 +19,8 @@ public class ProductPersistenceAdapter implements ProductPersistencePort{
 
 	@Override
 	public Product save(Product product) {
+		UUID uuid = UUID.randomUUID();
+		product.id(uuid);
 		ProductEntity save = productEntityJpaRepository.save(productEntityMapper.toEntity(product));
 		return productEntityMapper.toDomain(save);
 	}
