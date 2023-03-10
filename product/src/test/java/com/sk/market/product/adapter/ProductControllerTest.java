@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import com.sk.market.product.domain.Category;
 import com.sk.market.product.domain.Product;
 import com.sk.market.product.domain.ProductService;
+import com.sk.market.product.web.ProductRegisterRequest;
 
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;

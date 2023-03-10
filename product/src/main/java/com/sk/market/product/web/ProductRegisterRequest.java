@@ -1,4 +1,4 @@
-package com.sk.market.product.adapter;
+package com.sk.market.product.web;
 
 import com.sk.market.product.domain.Category;
 

@@ -1,4 +1,4 @@
-package com.sk.market.product.adapter;
+package com.sk.market.product.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

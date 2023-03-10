@@ -1,4 +1,4 @@
-package com.sk.market.product.adapter;
+package com.sk.market.product.web;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
