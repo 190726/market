@@ -1,5 +1,9 @@
 package com.sk.market.product.adapter;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sk.market.product.domain.Product;
@@ -14,9 +18,10 @@ public class ProductController {
 	private final ProductService productService;
 	private final ProductRegisterRequestMapper productRegisterRequestMapper;
 
-	public Product register(ProductRegisterRequest request) {
+	@PostMapping("/product")
+	public ResponseEntity<Void> register(@RequestBody ProductRegisterRequest request) {
 		Product product = productRegisterRequestMapper.toDomain(request);
-		return productService.register(product);
+		productService.register(product);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
-
 }

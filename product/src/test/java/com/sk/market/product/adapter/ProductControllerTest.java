@@ -29,9 +29,6 @@ public class ProductControllerTest {
 	void init() {
 		RestAssured.port = port;
 	}
-
-	@Autowired
-	private ProductController productController;
 	
 	@Test
 	void productRegister() throws Exception {
