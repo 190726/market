@@ -1,11 +1,11 @@
 package com.sk.market.product.web;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.sk.market.product.domain.NoExistProductException;
 import com.sk.market.product.domain.WrongFormatProductException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductExceptionAdvice {
 	
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-	@ExceptionHandler
-	public ErrorResult productExceptionHandle(WrongFormatProductException e){
+	@ExceptionHandler({NoExistProductException.class, WrongFormatProductException.class})
+	public ErrorResult productExceptionHandle(RuntimeException e){
 		log.error("product error message : {}", e.getMessage());
 		return new ErrorResult("BAD", e.getMessage());
 	}

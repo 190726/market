@@ -1,18 +1,23 @@
 package com.sk.market.product.adapter;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
+import com.sk.market.product.ProductStub;
 import com.sk.market.product.domain.Category;
+import com.sk.market.product.domain.Product;
 import com.sk.market.product.web.ProductRegisterRequest;
+import com.sk.market.product.web.ProductResponse;
 
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
@@ -23,6 +28,8 @@ public class ProductControllerTest {
 	
 	@LocalServerPort
 	private int port;
+	
+	@Autowired ProductPersistenceAdapter persistenceAdapter;
 
 	@BeforeEach
 	void init() {
@@ -53,6 +60,30 @@ public class ProductControllerTest {
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.when()
 				.post("/product")
+				.then().log().all().extract();
+		assertThat(response.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST.value());
+	}
+	
+	@Test
+	void findProductById() throws Exception {
+		//given 상품 1개 저장
+		Product product = ProductStub.product();
+		Product save = persistenceAdapter.save(product);
+		//when 상품 조회
+		ExtractableResponse<Response> response = RestAssured.given().log().all()
+				.queryParam("productId", save.getId().toString())
+				.when()
+				.get("/product")
+				.then().log().all().extract();
+		assertThat(response.as(ProductResponse.class).getId()).isEqualTo(save.getId().toString());
+	}
+	
+	@Test
+	void noExistProductFindById() throws Exception {
+		ExtractableResponse<Response> response = RestAssured.given().log().all()
+				.queryParam("productId", UUID.randomUUID().toString())
+				.when()
+				.get("/product")
 				.then().log().all().extract();
 		assertThat(response.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST.value());
 	}
