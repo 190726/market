@@ -16,5 +16,6 @@
 
     <modules>
     	<module>product</module>
+    	<module>order</module>
     </modules>
 </project>
