@@ -32,6 +32,7 @@ public class OrderServiceTest {
 		//합계 검증
 		BigDecimal totalPrice = order.totalPrice();
 		assertThat(totalPrice.toPlainString()).isEqualTo("110");
+		assertThat(order.status().name()).isEqualTo("ORDERED");
 	}
 	
 	
