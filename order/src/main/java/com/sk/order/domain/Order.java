@@ -1,4 +1,4 @@
-package order;
+package com.sk.order.domain;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.function.IntPredicate;
 
 public class Order {
 
+	private Long orderId;
 	private List<OrderItem> items = new ArrayList<>();
 	private BigDecimal totalPrice = BigDecimal.ZERO;
 	private OrderStatus orderStatus;
@@ -27,5 +28,13 @@ public class Order {
 
 	public OrderStatus status() {
 		return orderStatus;
+	}
+
+	public void orderId(Long id) {
+		this.orderId = id;
+	}
+	
+	public Long orderId() {
+		return this.orderId;
 	}
 }

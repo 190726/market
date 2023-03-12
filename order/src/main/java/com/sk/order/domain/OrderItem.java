@@ -1,4 +1,4 @@
-package order;
+package com.sk.order.domain;
 
 import java.math.BigDecimal;
 import java.util.UUID;
