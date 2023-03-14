@@ -8,10 +8,12 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 
+import com.sk.order.adapter.OrderInmemoryAdapter;
 import com.sk.order.domain.Order;
 import com.sk.order.domain.OrderItem;
 import com.sk.order.domain.OrderPersistencePort;
 import com.sk.order.domain.OrderService;
+import com.sk.order.domain.OrderStatus;
 
 public class OrderServiceTest {
 
@@ -31,6 +33,13 @@ public class OrderServiceTest {
 	void orderPlaceTest() throws Exception {
 		Order place = orderService.place(orderStubs());
 		assertThat(place.orderId()).isEqualTo(1L);
+	}
+	
+	@Test
+	void orderPayTest() throws Exception {
+		Order order = orderService.place(orderStubs());
+		Order payedOrder = orderService.pay(order.orderId());
+		assertThat(payedOrder.status()).isEqualTo(OrderStatus.PAYED);
 	}
 	
 	private Order orderStubs() {

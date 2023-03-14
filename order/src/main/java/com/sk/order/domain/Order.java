@@ -37,4 +37,9 @@ public class Order {
 	public Long orderId() {
 		return this.orderId;
 	}
+
+	public Order pay() {
+		this.orderStatus = OrderStatus.PAYED;
+		return this;
+	}
 }

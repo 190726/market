@@ -1,4 +1,4 @@
-package order;
+package com.sk.order.adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
