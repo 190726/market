@@ -1,4 +1,4 @@
-package com.sk.order.domain;
+package com.sk.market.order.domain;
 
 public class NotExistOrderException extends RuntimeException {
 

@@ -1,10 +1,23 @@
-package com.sk.order.domain;
+package com.sk.market.order.domain;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.IntPredicate;
 
+import com.sk.market.order.adapter.OrderEntity;
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Data
+@Setter(value = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Order {
 
 	private Long orderId;

@@ -1,4 +1,4 @@
-package com.sk.order.adapter;
+package com.sk.market.order.adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.sk.order.domain.Order;
-import com.sk.order.domain.OrderPersistencePort;
+import com.sk.market.order.domain.Order;
+import com.sk.market.order.domain.OrderPersistencePort;
 
 public class OrderInmemoryAdapter implements OrderPersistencePort {
 	

@@ -1,4 +1,4 @@
-package com.sk.order.domain;
+package com.sk.market.order.domain;
 
 import java.util.Optional;
 
