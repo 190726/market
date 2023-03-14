@@ -15,16 +15,7 @@ import com.sk.order.domain.OrderService;
 
 public class OrderServiceTest {
 
-
-	private OrderPersistencePort orderPersistencePort = new OrderPersistencePort() {
-		
-		@Override
-		public Order save(Order order) {
-			Long id = 1L;
-			order.orderId(id);
-			return order;
-		}
-	};
+	private OrderPersistencePort orderPersistencePort = new OrderInmemoryAdapter();
 	private OrderService orderService = new OrderService(orderPersistencePort);
 
 	@Test
@@ -40,7 +31,6 @@ public class OrderServiceTest {
 	void orderPlaceTest() throws Exception {
 		Order place = orderService.place(orderStubs());
 		assertThat(place.orderId()).isEqualTo(1L);
-		
 	}
 	
 	private Order orderStubs() {
