@@ -1,30 +1,21 @@
 package com.sk.market.order.adapter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.sk.market.order.domain.OrderStatus;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @Setter(value = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@ToString
 @Table(name = "ORDERS")
 @Entity
 public class OrderEntity {
@@ -36,8 +27,13 @@ public class OrderEntity {
 	
 	@Column(name = "TOTAL_PRICE")
 	private BigDecimal totalPrice;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ORDER_STATUS")
 	private OrderStatus orderStatus;
+
+	@ElementCollection
+	@CollectionTable(name = "ORDER_ITEM", joinColumns = @JoinColumn(name = "order_item_id"))
+	private List<OrderItemEntity> orderItems = new ArrayList<>();
+
 }

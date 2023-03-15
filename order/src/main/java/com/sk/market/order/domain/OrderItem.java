@@ -3,14 +3,11 @@ package com.sk.market.order.domain;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @Setter(value = AccessLevel.PRIVATE)
+@NoArgsConstructor
 @Builder
 @AllArgsConstructor
 public class OrderItem {

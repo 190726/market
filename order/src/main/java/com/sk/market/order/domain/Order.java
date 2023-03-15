@@ -6,27 +6,23 @@ import java.util.List;
 
 import com.sk.market.order.adapter.OrderEntity;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @Setter(value = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@ToString
 public class Order {
 
 	private Long orderId;
-	private List<OrderItem> items = new ArrayList<>();
+	private List<OrderItem> orderItems = new ArrayList<>();
 	private BigDecimal totalPrice = BigDecimal.ZERO;
 	private OrderStatus orderStatus;
 
 	public void addItem(OrderItem item) {
-		items.add(item);
+		orderItems.add(item);
 		calculatePrice(item.totalPrice());
 		orderStatus = OrderStatus.ORDERED;
 	}

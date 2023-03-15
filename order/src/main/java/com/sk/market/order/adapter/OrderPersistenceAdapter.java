@@ -19,7 +19,10 @@ public class OrderPersistenceAdapter implements OrderPersistencePort{
 
 	@Override
 	public Order save(Order order) {
-		OrderEntity save = orderEntityRepository.save(orderEntityMapper.toEntity(order));
+		System.out.println(order);
+		OrderEntity orderEntity = orderEntityMapper.toEntity(order);
+		System.out.println(orderEntity);
+		OrderEntity save = orderEntityRepository.save(orderEntity);
 		return orderEntityMapper.toDomain(save);
 	}
 
