@@ -15,6 +15,8 @@ public interface OrderEntityMapper {
 
 	Order toDomain(OrderEntity orderEntity);
 
+	List<Order> toOrders(List<OrderEntity> orderEntities);
+
 	OrderItemEntity map(OrderItem value);
 
 	List<OrderItemEntity> toOrderItemEntities (List<OrderItem> orderItems);

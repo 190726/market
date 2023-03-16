@@ -13,27 +13,27 @@ import lombok.RequiredArgsConstructor;
 @Repository
 @RequiredArgsConstructor
 public class OrderPersistenceAdapter implements OrderPersistencePort{
-	
+
 	private final OrderEntityRepository orderEntityRepository;
 	private final OrderEntityMapper orderEntityMapper;
 
 	@Override
 	public Order save(Order order) {
-		System.out.println(order);
-		OrderEntity orderEntity = orderEntityMapper.toEntity(order);
-		System.out.println(orderEntity);
-		OrderEntity save = orderEntityRepository.save(orderEntity);
+		OrderEntity save = orderEntityRepository.save(
+				orderEntityMapper.toEntity(order)
+		);
 		return orderEntityMapper.toDomain(save);
 	}
 
 	@Override
 	public Optional<Order> findBy(Long id) {
-		throw new UnsupportedOperationException();
+		return Optional.of(
+				orderEntityMapper.toDomain(orderEntityRepository.findById(id).get())
+		);
 	}
 
 	@Override
 	public List<Order> findAll() {
-		throw new UnsupportedOperationException();
+		return orderEntityMapper.toOrders(orderEntityRepository.findAll());
 	}
-
 }
